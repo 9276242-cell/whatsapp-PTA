@@ -398,6 +398,26 @@ def handle_pta_inbound(
             "content": PTA_ZONAL_MENU
         }
 
+    # 2. Check Numbered / Digit selections (1 to 8)
+    DIGIT_MAP = {
+        '1': 'pta_opt_mobile_reg',
+        '2': 'pta_opt_consumer_support',
+        '3': 'pta_opt_check_sim',
+        '4': 'pta_opt_vpn_reg',
+        '5': 'pta_opt_cyber_audit',
+        '6': 'pta_opt_zonal_offices',
+        '7': 'pta_opt_report_blasphemy',
+        '8': 'pta_opt_other_services'
+    }
+    if clean_text in DIGIT_MAP:
+        digit_target = DIGIT_MAP[clean_text]
+        if digit_target == 'pta_opt_consumer_support':
+            return {"type": "interactive_list", "content": PTA_CONSUMER_MENU}
+        elif digit_target == 'pta_opt_zonal_offices':
+            return {"type": "interactive_list", "content": PTA_ZONAL_MENU}
+        elif digit_target in DETERMINISTIC_REPLIES:
+            return {"type": "interactive_button", "content": DETERMINISTIC_REPLIES[digit_target], "buttons": STANDARD_BACK_BUTTONS}
+
     # 2. Check Deterministic Replies (Zero Tokens)
     matched_opt = clean_text
     # Handle natural shortcuts
