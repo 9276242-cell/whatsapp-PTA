@@ -1,28 +1,47 @@
-# PTA Web Analysis Directorate (WAD) & Online Content Information
+# PTA Web Analysis Directorate (WAD) & Online Content Regulation
 
-## Overview & Statutory Mandate
-The Web Analysis Directorate (WAD) operates under the Pakistan Telecommunication Authority (PTA) to oversee online content facilitation, cyber safety, social media complaint mechanisms, and the removal or blocking of unlawful online content pursuant to Section 37 of the Prevention of Electronic Crimes Act (PECA), 2016.
+## 1. Statutory Mandate & Legal Framework
+The **Web Analysis Directorate (WAD)** operates under the Pakistan Telecommunication Authority (PTA) Headquarters, Islamabad. Its statutory mission is to protect Pakistan's cyberspace and citizens under:
+- **Section 37 of Prevention of Electronic Crimes Act (PECA), 2016** (Unlawful online content)
+- **Removal and Blocking of Unlawful Online Content (Procedure, Oversight and Safeguards) Rules, 2021**
+- **Public URL**: `https://www.pta.gov.pk/category/unlawful-online-content` and `https://www.pta.gov.pk/category/report-websiteurl-1175452560-2023-05-30`
 
-## WAD's Summaries & Public Documents
-Under the official PTA portal section (Social Media & Online Content Information - https://www.pta.gov.pk/category/test-604843517-2025-08-20), the Web Analysis Directorate publishes authoritative public guidelines:
-1. **Guidelines for Registration of Complaints with Social Media Platforms**:
-   - Official PDF: https://www.pta.gov.pk/assets/media/sm_platforms_09032020.pdf
-   - Provides step-by-step reporting procedures for unlawful content on Facebook, X (formerly Twitter), YouTube, Instagram, and TikTok.
-2. **Parental Control Softwares**:
-   - Official PDF: https://www.pta.gov.pk/assets/media/parental_control_software_updated_23-07-2026.pdf
-   - Comprehensive evaluated software list recommended by PTA for parents to safeguard children from objectionable and adult content online.
-3. **Online Safety Guide - Safe Use of Social Media**:
-   - Official PDF: https://www.pta.gov.pk/assets/media/pta_sm_guide_18-11-2022.pdf
-   - Best practices for citizens to avoid phishing, identity theft, malware, and cyber bullying.
-4. **WAD Activity Summaries & Public Statistics**:
-   - Statistical overviews of unlawful content links reported, processed, and restricted across international social media platforms under PECA statutory guidelines.
+---
 
-## Public Complaint Mechanism for Unlawful Online Content
-- Portal: https://www.pta.gov.pk/category/unlawful-online-content
-- Email for Direct Complaints: `complaint@pta.gov.pk`
-- Categories of Unlawful Content handled by WAD:
-  - Blasphemy / Anti-Religious Content
-  - Content against the Glory of Islam
-  - Content against Defense, Integrity, and Security of Pakistan
-  - Public Order, Contempt of Court, and Defamation
-  - Decency / Morality / Child Sexual Abuse Material (CSAM)
+## 2. Fast-Track Reporting Email Addresses
+To ensure swift remediation and emergency blocking of harmful web content, PTA operates dedicated triage channels:
+
+| Complaint / Incident Type | Designated Email Address |
+| :--- | :--- |
+| **Blasphemous Content** | `report-blasphemy@pta.gov.pk` |
+| **Child Sexual Abuse Material (CSAM) / Child Abuse** | `reportchildporn@pta.gov.pk` |
+| **Hate Speech / Promotion of Violence & Extremism** | `content-complaint@pta.gov.pk` |
+| **Nudity & Pornography** | `content-complaint@pta.gov.pk` |
+| **Anti-State & Security Threats under Section 37 PECA** | `content-complaint@pta.gov.pk` |
+| **General Online Complaints & CMS Portal** | `complaint@pta.gov.pk` or `https://complaint.pta.gov.pk` |
+
+---
+
+## 3. Social Media Reporting Mechanisms (`https://www.pta.gov.pk/category/register-complaint-to-pta-683510208-2025-09-29`)
+PTA guides citizens on direct and official reporting for international platforms:
+- **TikTok**: Tap "Share" &rarr; "Report" &rarr; select specific category (hate speech, harassment, nudity, minor safety).
+- **Facebook & Instagram (Meta)**: Click three dots (...) on top right of the post/profile &rarr; "Report" &rarr; choose violation type.
+- **X (formerly Twitter)**: Click three dots (...) on post &rarr; "Report post" &rarr; specify hateful conduct or non-consensual imagery.
+- **YouTube (Google)**: Tap three dots under video &rarr; "Report" &rarr; select child abuse or violent content.
+- If platforms fail to take down illegal content within statutory timelines, citizens can escalate directly to PTA via the CMS Portal.
+
+---
+
+## 4. PTA Recommended Parental Control Software List
+PTA evaluated and published official recommendations for parents to protect children from harmful online content:
+
+### A. Free Built-in Solutions:
+1. **Microsoft Family Safety**: For Windows and Android devices (screen time limits, web content filtering, location tracking).
+2. **Google Family Link**: For Android devices and Chromebooks (app approval, safe search enforcement, activity reports).
+3. **Apple Screen Time & Parental Controls**: Built into iOS/iPadOS/macOS (content & privacy restrictions, adult website blocking).
+
+### B. Commercial / Paid Cross-Platform Solutions:
+- **Net Nanny**: `https://www.netnanny.com` (AI-powered dynamic content filtering; Windows, Mac, Android, iOS).
+- **Qustodio**: `https://www.qustodio.com` (Robust social media monitoring and geofencing).
+- **Norton Family**: `https://family.norton.com` (Web safety, video monitoring, time supervision).
+- **WebWatcher, McAfee Safe Family, Witigo, ContentBarrier (Mac), Spytech SentryPC**.
