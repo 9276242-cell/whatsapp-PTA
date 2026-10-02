@@ -173,13 +173,35 @@ DETERMINISTIC_REPLIES = {
         "• Specialized judicial body for hearing appeals against Authority decisions."
     ),
     "pta_opt_cyber_audit": (
-        "Resources For Security Audit Firms Registration:\n\n"
-        "• Download the Security Audit Firms Criteria:\n"
-        "https://www.pta.gov.pk/assets/media/cs_security_audit_criteria_13092023.pdf\n\n"
-        "• Download the Security Audit Firms Registration Form:\n"
-        "https://www.pta.gov.pk/assets/media/security_audit_firm_reg_form_02022022.pdf\n\n"
-        "• View Security Audit Firms Categorization:\n"
-        "https://www.pta.gov.pk/category/security-audit-firms-categorization-1547609365-2023-05-30"
+        "Official Register of Enlisted Third-Party Cybersecurity Audit Firms (PTA):\n"
+        "(Under CTDISR & Telecom Cyber Security Strategy)\n\n"
+        "🏛️ CATEGORY I (Full Sector Authority: Cat-I to Cat-IV):\n"
+        "1. Myson Engineering Systems (JV–Riphah RISE) — badar@myson.com.pk\n"
+        "2. Ebryx (Pvt.) Ltd. — syed.talal@ebryx.com\n"
+        "3. EY Ford Rhodes (Ernst & Young) — Bilal.Saleem@pk.ey.com\n"
+        "4. Risk Associates — kashif.hassan@riskassociates.com\n"
+        "5. Trillium Information Security Systems — aniqa.fareed@infosecurity.com.pk\n"
+        "6. SGS Pakistan (Pvt.) Ltd. — waqas.awan@sgs.com\n"
+        "7. BDO Ebrahim & Co. — sshah@bdo.com.pk\n"
+        "8. A. F. Ferguson & Co. (PwC) — m.bilal@pwc.com\n\n"
+        "🏢 CATEGORY II (Medium/Large Telecoms: Cat-II to Cat-IV):\n"
+        "9. Mutex Systems Ltd. — samihaider@mutexsystemsltd.com\n"
+        "10. YLinx — muhammad.kashif@ylinx.pk\n"
+        "11. Security Experts — info@securityexperts.com.pk\n"
+        "12. Xcelliti — kashif.jamil@xcelliti.com\n"
+        "13. Zerox Innovation Pvt Ltd — waqas@zeroxinnovation.com\n\n"
+        "🌐 CATEGORY III (Regional ISPs & Cloud: Cat-III to Cat-IV):\n"
+        "14. Catalyic Consulting — info@catalyic.com\n"
+        "15. Cyberisk — atif@cyberisk.com.pk\n"
+        "16. Kualitatem (Private) Limited — jamil@kualitatem.com\n"
+        "17. 360 Technologies (Pvt.) Ltd. — nomaniqbal@360technologies.net\n"
+        "18. CS Zone Private Limited — info@cszone.pk\n\n"
+        "🛡️ CATEGORY IV (Local Class Licensees):\n"
+        "19. Lynx Information Security — info@lynx-infosec.com\n"
+        "20. Compliance Wing Pvt. Ltd. — syed.saad@compliancewing.com\n"
+        "21. Horizon Tech — pmo@horizon.com.pk\n"
+        "22. Stepnex Services Pvt. Ltd. — info@stepnexs.com\n\n"
+        "Rules: Audit firms can audit their own category or downward (e.g., Cat-I can audit Cat-I through IV). Downward firms cannot audit upward."
     ),
     "pta_sub_file_complaint": (
         "To lodge a formal telecom complaint against any cellular operator or ISP:\n"
@@ -501,7 +523,12 @@ def handle_pta_inbound(
         matched_opt = 'pta_opt_wad_summaries'
     elif any(k in clean_lower for k in ['determination', 'determinations', 'onic', 'balance validity', 'esim charges']):
         matched_opt = 'pta_opt_determinations'
-    elif clean_lower in ['cyber audit', 'audit firm', 'pta_opt_cyber_audit']:
+    elif any(k in clean_lower for k in [
+        'audit firm', 'audit firms', 'security firm', 'security firms', 
+        'enlisted firm', 'enlisted firms', 'third-party cyber', 'third party cyber', 
+        'third-party security', 'third party security', 'cyber security audit', 
+        'cybersecurity audit', 'cyber audit', 'registered audit', 'audit criteria'
+    ]):
         matched_opt = 'pta_opt_cyber_audit'
 
     if matched_opt in DETERMINISTIC_REPLIES:
