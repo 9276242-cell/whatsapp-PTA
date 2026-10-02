@@ -118,6 +118,20 @@ DETERMINISTIC_REPLIES = {
         "• Requirement for freelancers: Platform proof / client contract + static IP\n"
         "• Processing timeline: Usually completed within 8-24 business hours"
     ),
+    "pta_opt_wad_summaries": (
+        "Web Analysis Directorate (WAD) & Online Content Information:\n\n"
+        "Under Section 37 of PECA 2016, PTA's Web Analysis Directorate (WAD) monitors online content and processes public grievances.\n\n"
+        "Official WAD Public Resources & Guidelines:\n"
+        "• Guidelines for Registration of Complaints with Social Media Platforms:\n"
+        "  https://www.pta.gov.pk/assets/media/sm_platforms_09032020.pdf\n"
+        "• Parental Control Softwares (Updated 2026):\n"
+        "  https://www.pta.gov.pk/assets/media/parental_control_software_updated_23-07-2026.pdf\n"
+        "• Online Safety Guide - Safe Use of Social Media:\n"
+        "  https://www.pta.gov.pk/assets/media/pta_sm_guide_18-11-2022.pdf\n"
+        "• Unlawful Online Content Reporting Portal:\n"
+        "  https://www.pta.gov.pk/category/unlawful-online-content\n\n"
+        "Direct Email: complaint@pta.gov.pk"
+    ),
     "pta_opt_cyber_audit": (
         "Resources For Security Audit Firms Registration:\n\n"
         "• Download the Security Audit Firms Criteria:\n"
@@ -433,6 +447,8 @@ def handle_pta_inbound(
         matched_opt = 'pta_sub_stolen_phone'
     elif clean_lower in ['complaint', 'file complaint', 'cms', 'pta_sub_file_complaint']:
         matched_opt = 'pta_sub_file_complaint'
+    elif any(k in clean_lower for k in ['wad', 'wad’s summaries', 'wad summaries', 'web analysis directorate', 'parental control']):
+        matched_opt = 'pta_opt_wad_summaries'
 
     if matched_opt in DETERMINISTIC_REPLIES:
         reply_body = DETERMINISTIC_REPLIES[matched_opt]
