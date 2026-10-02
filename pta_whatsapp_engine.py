@@ -233,42 +233,40 @@ _KNOWLEDGE_CHUNKS = []
 _EMBEDDING_MODEL = None
 
 def _load_knowledge_base():
-    """Load and index all Markdown/text knowledge documents."""
     global _KNOWLEDGE_CHUNKS
     if _KNOWLEDGE_CHUNKS:
         return
     
     base_dirs = [
-        "/Users/anasmahmood/khanwco-repos/whatsapp-PTA/knowledge/01_Official_Government_Crawl",
-        "/Users/anasmahmood/khanwco-repos/whatsapp-PTA/knowledge/02_User_Drop_Folder",
-        "/opt/pta-drive-rag/knowledge"
+        "/opt/pta-drive-rag/knowledge",
+        "/Users/anasmahmood/khanwco-repos/whatsapp-PTA/knowledge"
     ]
     
     chunks = []
     for d in base_dirs:
         if not os.path.exists(d):
             continue
-        for fpath in glob.glob(os.path.join(d, "*.md")) + glob.glob(os.path.join(d, "*.txt")):
-            try:
-                with open(fpath, "r", encoding="utf-8") as f:
-                    content = f.read()
-                
-                # Logical section chunking by Markdown headers
-                sections = re.split(r'\n(?=#{1,3}\s)', content)
-                fname = os.path.basename(fpath)
-                for s in sections:
-                    s_clean = s.strip()
-                    if len(s_clean) > 40:
-                        chunks.append({
-                            "source": fname,
-                            "text": s_clean
-                        })
-            except Exception as e:
-                print(f"[PTA KB LOAD ERR] {fpath}: {e}")
+        for root, _, files in os.walk(d):
+            for fname in files:
+                if not (fname.endswith('.md') or fname.endswith('.txt')):
+                    continue
+                fpath = os.path.join(root, fname)
+                try:
+                    with open(fpath, 'r', encoding='utf-8') as f:
+                        content = f.read()
+                    sections = re.split(r'\n(?=#{1,3}\s)', content)
+                    for s in sections:
+                        s_clean = s.strip()
+                        if len(s_clean) > 40:
+                            chunks.append({
+                                'source': fname,
+                                'text': s_clean
+                            })
+                except Exception as e:
+                    print(f"[PTA KB LOAD ERR] {fpath}: {e}")
     
     _KNOWLEDGE_CHUNKS = chunks
     print(f"[PTA ENGINE] Loaded {len(_KNOWLEDGE_CHUNKS)} knowledge chunks from official sources.")
-
 
 def retrieve_relevant_telecom_context(query: str, top_k: int = 3) -> str:
     """
@@ -279,14 +277,22 @@ def retrieve_relevant_telecom_context(query: str, top_k: int = 3) -> str:
     if not _KNOWLEDGE_CHUNKS:
         return ""
     
-    # Keyword overlap scoring for CPU fast-path
-    q_words = set(re.findall(r'\b\w{3,}\b', query.lower()))
+    # Weighted semantic keyword scoring
+    q_lower = query.lower()
+    q_words = [w for w in re.findall(r'\b\w{3,}\b', q_lower) if w not in {'how', 'what', 'can', 'the', 'for', 'with', 'and'}]
     scored_chunks = []
     for c in _KNOWLEDGE_CHUNKS:
-        c_words = set(re.findall(r'\b\w{3,}\b', c['text'].lower()))
-        common = len(q_words.intersection(c_words))
-        if common > 0:
-            scored_chunks.append((common, c['text']))
+        text_lower = c['text'].lower()
+        score = 0
+        for w in q_words:
+            if w in text_lower:
+                # Give high weight to key regulatory keywords
+                if w in {'vpn', 'dirbs', 'imei', 'sim', '668', 'complaint', 'psid', 'tax'}:
+                    score += 5
+                else:
+                    score += 1
+        if score > 0:
+            scored_chunks.append((score, c['text']))
             
     scored_chunks.sort(key=lambda x: x[0], reverse=True)
     top_matches = [t[1] for t in scored_chunks[:top_k]]
